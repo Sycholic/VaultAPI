@@ -42,12 +42,7 @@ public class Items {
         items.add(new ItemInfo("End Rod", new String[][]{{"end", "rod"}}, Material.END_ROD));
         items.add(new ItemInfo("Chorus Plant", new String[][]{{"chor", "plan"}}, Material.CHORUS_PLANT));
         items.add(new ItemInfo("Chorus Flower", new String[][]{{"chor", "flow"}}, Material.CHORUS_FLOWER));
-        items.add(new ItemInfo("Purpur Block", new String[][]{{"purp", "bloc"}}, Material.PURPUR_BLOCK));
-        items.add(new ItemInfo("Purpur Slab", new String[][]{{"purp", "slab"}, {"qua", "step"}}, Material.PURPUR_SLAB));
-        items.add(new ItemInfo("Purpur Double Slab", new String[][]{{"purp", "dou", "sla"}, {"qua", "dou", "step"}}, Material.PURPUR_DOUBLE_SLAB));
-        items.add(new ItemInfo("Purpur Stairs", new String[][]{{"purp", "stair"}}, Material.PURPUR_STAIRS));
-        items.add(new ItemInfo("Purpur Pillar", new String[][]{{"purp", "pill"}}, Material.PURPUR_PILLAR));        
-        items.add(new ItemInfo("End Brick", new String[][]{{"end", "bri"}}, Material.END_BRICKS));
+
         items.add(new ItemInfo("Beetroot Block", new String[][]{{"beet", "bloc"}}, Material.BEETROOT_BLOCK));
         items.add(new ItemInfo("Repeating Command Block", new String[][]{{"rep", "comm"}}, Material.COMMAND_REPEATING));
         items.add(new ItemInfo("Chain Command Block", new String[][]{{"chai", "comm"}}, Material.COMMAND_CHAIN));
@@ -101,58 +96,126 @@ public class Items {
         items.add(new ItemInfo("Splash Potion of Harming", new String[][] {{"poti", "harm", "spl"}}, Material.POTION, (short) 16396));
         items.add(new ItemInfo("Splash Potion of Harming (Reverted)", new String[][] {{"poti", "harm", "spl", "rev"}}, Material.POTION, (short) 16460));
         items.add(new ItemInfo("Splash Potion of Harming II", new String[][] {{"poti", "harm", "spl", "2"}, {"poti", "harm", "spl", "ii"}}, Material.POTION, (short) 16428));
-        //
-        items.add(new ItemInfo("Air", new String[][]{{"air"}}, Material.AIR));
+
+        /* Resort list --  Fix and notate all known technical blocks.
+           Went with a sorted list almost identical to vanilla but more sorted by Material.types
+           Sorting order is critical this is not totally optimal but it much better then before as most used blocks/items
+           should be towards the start of the list. This list has to be inventory legal. */
+        // items.add(new ItemInfo("Air", new String[][]{{"air"}}, Material.AIR));
+        // minecraft:air are technical /setblock 0
+        // Stone types
         items.add(new ItemInfo("Stone", new String[][]{{"ston"}, {"smoo", "sto"}}, Material.STONE));
+        items.add(new ItemInfo("Granite", new String[][]{{"gran"}}, Material.STONE, (short) 1));
+        items.add(new ItemInfo("Polished Granite", new String[][]{{"pol", "gran"}, {"smoo", "gran"}}, Material.STONE, (short) 2));
+        items.add(new ItemInfo("Diorite", new String[][]{{"dior"}}, Material.STONE, (short) 3));
+        items.add(new ItemInfo("Polished Diorite", new String[][]{{"pol", "dior"}, {"smoo", "dior"}}, Material.STONE, (short) 4));
+        items.add(new ItemInfo("Andesite", new String[][]{{"ande"}}, Material.STONE, (short) 5));
+        items.add(new ItemInfo("Polished Andesite", new String[][]{{"pol", "ande"}, {"smoo", "ande"}}, Material.STONE, (short) 6));
+        items.add(new ItemInfo("Purpur Block", new String[][]{{"purp", "bloc"}}, Material.PURPUR_BLOCK));
+        items.add(new ItemInfo("Purpur Pillar", new String[][]{{"purp", "pill"}}, Material.PURPUR_PILLAR));        
+        items.add(new ItemInfo("End Brick", new String[][]{{"end", "bri"}}, Material.END_BRICKS));
+        //
         items.add(new ItemInfo("Grass", new String[][]{{"gras"}}, Material.GRASS));
+        // Dirt types
         items.add(new ItemInfo("Dirt", new String[][]{{"dirt"}}, Material.DIRT));
+        items.add(new ItemInfo("Coarse Dirt", new String[][]{{"coar", "dirt"}, {"less", "dirt"}}, Material.DIRT, (short) 1));
+        items.add(new ItemInfo("Podzol", new String[][]{{"podz"}, {"dirt", "pod"}}, Material.DIRT, (short) 2));
+        //
         items.add(new ItemInfo("Cobblestone", new String[][]{{"cobb", "sto"}, {"cobb"}}, Material.COBBLESTONE));
+        //
         items.add(new ItemInfo("Oak Plank", new String[][]{{"wood"}, {"oak", "plank"}, {"oak", "wood"}}, Material.WOOD));
         items.add(new ItemInfo("Spruce Plank", new String[][]{{"spru", "plank"}, {"spruc", "wood"}}, Material.WOOD, (short) 1));
         items.add(new ItemInfo("Birch Plank", new String[][]{{"birch", "plank"}, {"birch", "wood"}}, Material.WOOD, (short) 2));
         items.add(new ItemInfo("Jungle Plank", new String[][]{{"jung", "plank"}, {"jung", "wood"}}, Material.WOOD, (short) 3));
+        //
         items.add(new ItemInfo("Oak Sapling", new String[][]{{"sapl"}, {"sapl", "oak"}}, Material.SAPLING));
         items.add(new ItemInfo("Spruce Sapling", new String[][]{{"sapl", "spruc"}}, Material.SAPLING, (short) 1));
         items.add(new ItemInfo("Birch Sapling", new String[][]{{"sapl", "birch"}}, Material.SAPLING, (short) 2));
         items.add(new ItemInfo("Jungle Sapling", new String[][]{{"sapl", "jungle"}}, Material.SAPLING, (short) 3));
+        //
         items.add(new ItemInfo("Bedrock", new String[][]{{"rock"}}, Material.BEDROCK));
-        items.add(new ItemInfo("Water", new String[][]{{"water"}}, Material.WATER));
-        items.add(new ItemInfo("Lava", new String[][]{{"lava"}}, Material.LAVA));
+        // minecraft:flowing_water technical block /setblock ID:8
+        // minecraft:water technical block /setblock ID:9
+        // minecraft:flowing_lava technical block /setblock ID:10
+        // minecraft:lava technical block /setblock ID:11
         items.add(new ItemInfo("Sand", new String[][]{{"sand"}}, Material.SAND));
+        items.add(new ItemInfo("Red Sand", new String[][]{{"red", "sand"}}, Material.SAND, (short) 1));
+        //
+        items.add(new ItemInfo("Gravel", new String[][]{{"grav"}}, Material.GRAVEL));
         items.add(new ItemInfo("Gold Ore", new String[][]{{"ore", "gold"}}, Material.GOLD_ORE));
         items.add(new ItemInfo("Iron Ore", new String[][]{{"ore", "iron"}}, Material.IRON_ORE));
         items.add(new ItemInfo("Coal Ore", new String[][]{{"ore", "coal"}}, Material.COAL_ORE));
-        items.add(new ItemInfo("Gravel", new String[][]{{"grav"}}, Material.GRAVEL));
+        //
         items.add(new ItemInfo("Oak Log", new String[][]{{"oak"}, {"log"}, {"oak", "log"}}, Material.LOG));
         items.add(new ItemInfo("Spruce Log", new String[][]{{"spruc"}, {"spruc", "log"}}, Material.LOG, (short) 1));
         items.add(new ItemInfo("Birch Log", new String[][]{{"birch"}, {"birch", "log"}}, Material.LOG, (short) 2));
         items.add(new ItemInfo("Jungle Log", new String[][]{{"jung", "log"}}, Material.LOG, (short) 3));
-        items.add(new ItemInfo("Leaves Block", new String[][]{{"blo", "leaf"}, {"blo", "leaves"}}, Material.LEAVES));
-        items.add(new ItemInfo("Spruce Leaves Block", new String[][]{{"blo", "lea", "spruc"}}, Material.LEAVES, (short) 1));
-        items.add(new ItemInfo("Birch Leaves Block", new String[][]{{"blo", "lea", "birch"}}, Material.LEAVES, (short) 2));
-        items.add(new ItemInfo("Jungle Leaves Block", new String[][]{{"blo", "lea", "jung"}}, Material.LEAVES, (short) 3));
-        items.add(new ItemInfo("Leaves", new String[][]{{"leaf"}, {"leaves"}}, Material.LEAVES, (short) 4));
-        items.add(new ItemInfo("Spruce Leaves", new String[][]{{"lea", "spruce"}}, Material.LEAVES, (short) 5));
-        items.add(new ItemInfo("Birch Leaves", new String[][]{{"lea", "birch"}}, Material.LEAVES, (short) 6));
-        items.add(new ItemInfo("Jungle Leaves", new String[][]{{"lea", "jung"}}, Material.LEAVES, (short) 7));
+        // Questionable if these are even valid they rot. should we not only supply non rotting blocks to players?
+        // Im going with my gut here.. 
+        items.add(new ItemInfo("Leaf Block", new String[][]{{"blo", "leaf"}, {"blo", "leaves"}}, Material.LEAVES));
+        items.add(new ItemInfo("Spruce Leaf Block", new String[][]{{"blo", "lea", "spruc"}}, Material.LEAVES, (short) 1));
+        items.add(new ItemInfo("Birch Leaf Block", new String[][]{{"blo", "lea", "birch"}}, Material.LEAVES, (short) 2));
+        items.add(new ItemInfo("Jungle Leaf Block", new String[][]{{"blo", "lea", "jung"}}, Material.LEAVES, (short) 3));
+        //
+        items.add(new ItemInfo("Forever Leaf", new String[][]{{"fore","leaf"}, {"fore","leaves"}}, Material.LEAVES, (short) 4));
+        items.add(new ItemInfo("Forever Spruce Leaf", new String[][]{{"fore","lea", "spruce"}}, Material.LEAVES, (short) 5));
+        items.add(new ItemInfo("Forever Birch Leaf", new String[][]{{"fore","lea", "birch"}}, Material.LEAVES, (short) 6));
+        items.add(new ItemInfo("Forever Jungle Leaf", new String[][]{{"fore","lea", "jung"}}, Material.LEAVES, (short) 7));
+        //
         items.add(new ItemInfo("Sponge", new String[][]{{"sponge"}}, Material.SPONGE));
+        items.add(new ItemInfo("Wet Sponge", new String[][]{{"wet", "spon"}}, Material.SPONGE, (short) 1));
+        //
         items.add(new ItemInfo("Glass", new String[][]{{"glas"}, {"sili"}}, Material.GLASS));
+        items.add(new ItemInfo("White Stained Glass", new String[][]{{"stai", "glas", "whit"}, {"stai", "glas"}}, Material.STAINED_GLASS));
+        items.add(new ItemInfo("Orange Stained Glass", new String[][]{{"stai", "glas", "ora"}}, Material.STAINED_GLASS, (short) 1));
+        items.add(new ItemInfo("Magenta Stained Glass", new String[][]{{"stai", "glas", "mag"}}, Material.STAINED_GLASS, (short) 2));
+        items.add(new ItemInfo("Light Blue Stained Glass", new String[][]{{"stai", "glas", "lig", "blue"}}, Material.STAINED_GLASS, (short) 3));
+        items.add(new ItemInfo("Yellow Stained Glass", new String[][]{{"stai", "glas", "yell"}}, Material.STAINED_GLASS, (short) 4));
+        items.add(new ItemInfo("Light Green Stained Glass", new String[][]{{"stai", "glas", "lig", "gree"}, {"stai", "glas", "gree"}}, Material.STAINED_GLASS, (short) 5));
+        items.add(new ItemInfo("Pink Stained Glass", new String[][]{{"stai", "glas", "pink"}}, Material.STAINED_GLASS, (short) 6));
+        items.add(new ItemInfo("Gray Stained Glass", new String[][]{{"stai", "glas", "gra"}, {"stai", "glas", "gre"}}, Material.STAINED_GLASS, (short) 7));
+        items.add(new ItemInfo("Light Gray Stained Glass", new String[][]{{"lig", "stai", "glas", "gra"}, {"lig", "stai", "glas", "gre"}}, Material.STAINED_GLASS, (short) 8));
+        items.add(new ItemInfo("Cyan Stained Glass", new String[][]{{"stai", "glas", "cya"}}, Material.STAINED_GLASS, (short) 9));
+        items.add(new ItemInfo("Purple Stained Glass", new String[][]{{"stai", "glas", "pur"}}, Material.STAINED_GLASS, (short) 10));
+        items.add(new ItemInfo("Blue Stained Glass", new String[][]{{"stai", "glas", "blue"}}, Material.STAINED_GLASS, (short) 11));
+        items.add(new ItemInfo("Brown Stained Glass", new String[][]{{"stai", "glas", "brow"}}, Material.STAINED_GLASS, (short) 12));
+        items.add(new ItemInfo("Dark Green Stained Glass", new String[][]{{"stai", "glas", "dar", "gree"}, {"stai", "glas", "gree"}}, Material.STAINED_GLASS, (short) 13));
+        items.add(new ItemInfo("Red Stained Glass", new String[][]{{"stai", "glas", "red"}}, Material.STAINED_GLASS, (short) 14));
+        items.add(new ItemInfo("Black Stained Glass", new String[][]{{"stai", "glas", "bla"}}, Material.STAINED_GLASS, (short) 15));
+        //
         items.add(new ItemInfo("Lapis Lazuli Ore", new String[][]{{"lap", "laz", "ore"}, {"lazul", "ore"}, {"ore", "lapiz"}}, Material.LAPIS_ORE));
         items.add(new ItemInfo("Lapis Lazuli Block", new String[][]{{"lap", "laz", "bloc"}, {"lazu", "bloc"}, {"blo", "lapi"}}, Material.LAPIS_BLOCK));
         items.add(new ItemInfo("Dispenser", new String[][]{{"dispen"}}, Material.DISPENSER));
+        //
         items.add(new ItemInfo("Sandstone", new String[][]{{"sand", "st"}}, Material.SANDSTONE));
         items.add(new ItemInfo("Chiseled Sandstone", new String[][]{{"chis", "sand", "sto"}}, Material.SANDSTONE, (short) 1));
         items.add(new ItemInfo("Smooth Sandstone", new String[][]{{"smoo", "sand", "sto"}}, Material.SANDSTONE, (short) 2));
+        items.add(new ItemInfo("Red Sandstone", new String[][]{{"red", "san", "sto"}}, Material.RED_SANDSTONE));
+        items.add(new ItemInfo("Chiseled Red Sandstone", new String[][]{{"red", "chi", "san", "sto"}}, Material.RED_SANDSTONE, (short) 1));
+        items.add(new ItemInfo("Smooth Red Sandstone", new String[][]{{"red", "smoo", "san", "sto"}}, Material.RED_SANDSTONE, (short) 2));
+        //
         items.add(new ItemInfo("Note Block", new String[][]{{"note"}}, Material.NOTE_BLOCK));
-        items.add(new ItemInfo("Bed Block", new String[][]{{"block", "bed"}}, Material.BED_BLOCK));
+        // Minecraft:Bed_Block are technical /setblock ID:26
         items.add(new ItemInfo("Powered Rail", new String[][]{{"rail", "pow"}, {"trac", "pow"}, {"boost"}}, Material.POWERED_RAIL));
         items.add(new ItemInfo("Detector Rail", new String[][]{{"rail", "det"}, {"trac", "det"}, {"detec"}}, Material.DETECTOR_RAIL));
         items.add(new ItemInfo("Sticky Piston", new String[][]{{"stic", "pis"}}, Material.PISTON_STICKY_BASE));
         items.add(new ItemInfo("Web", new String[][]{{"web"}, {"cobw"}}, Material.WEB));
+        // Double Grass Blocks
         items.add(new ItemInfo("Dead Shrub", new String[][]{{"dead", "shru"}, {"dese", "shru"}, {"shrub"}}, Material.LONG_GRASS, (short) 0));
         items.add(new ItemInfo("Tall Grass", new String[][]{{"tall", "gras"}, {"long", "gras"}}, Material.LONG_GRASS, (short) 1));
         items.add(new ItemInfo("Fern", new String[][]{{"fern"}}, Material.LONG_GRASS, (short) 2));
+        items.add(new ItemInfo("Sunflower", new String[][]{{"flow", "sun"}}, Material.DOUBLE_PLANT, (short) 0));
+        items.add(new ItemInfo("Lilac", new String[][]{{"flow", "lila"}, {"lila"}}, Material.DOUBLE_PLANT, (short) 1));
+        items.add(new ItemInfo("Double Tallgrass", new String[][]{{"doub", "tall", "gras"}, {"doub", "long", "gras"}}, Material.DOUBLE_PLANT, (short) 2));
+        items.add(new ItemInfo("Large Fern", new String[][]{{"larg", "fern"}, {"doub", "fern"}}, Material.DOUBLE_PLANT, (short) 3));
+        items.add(new ItemInfo("Rose Bush", new String[][]{{"bush", "rose"}}, Material.DOUBLE_PLANT, (short) 4));
+        items.add(new ItemInfo("Peony", new String[][]{{"flow", "peon"}, {"peon"}}, Material.DOUBLE_PLANT, (short) 5));
+        //
+        items.add(new ItemInfo("Dead Bush", new String[][]{{"dea", "bush"}}, Material.DEAD_BUSH));
         items.add(new ItemInfo("Piston", new String[][]{{"pisto"}}, Material.PISTON_BASE));
+        // minecraft:piston_head are technical /setblock ID:34
+        // minecraft:piston_extension are technical /setblock ID:36
+        // Wool Blocks
         items.add(new ItemInfo("White Wool", new String[][]{{"wool", "whit"}, {"wool"}}, Material.WOOL));
         items.add(new ItemInfo("Orange Wool", new String[][]{{"wool", "ora"}}, Material.WOOL, (short) 1));
         items.add(new ItemInfo("Magenta Wool", new String[][]{{"wool", "mag"}}, Material.WOOL, (short) 2));
@@ -169,48 +232,77 @@ public class Items {
         items.add(new ItemInfo("Dark Green Wool", new String[][]{{"wool", "dar", "gree"}, {"wool", "gree"}}, Material.WOOL, (short) 13));
         items.add(new ItemInfo("Red Wool", new String[][]{{"wool", "red"}}, Material.WOOL, (short) 14));
         items.add(new ItemInfo("Black Wool", new String[][]{{"wool", "bla"}}, Material.WOOL, (short) 15));
+        //
         items.add(new ItemInfo("Dandelion", new String[][]{{"flow", "yell"}, {"dande"}}, Material.YELLOW_FLOWER));
+        // Red Rose Blocks
+        items.add(new ItemInfo("Poppy", new String[][]{{"flow", "red"}, {"rose"}, {"poppy"}}, Material.RED_ROSE));
+        items.add(new ItemInfo("Blue Orchid", new String[][]{{"flow", "blue"}, {"orch", "blue"}}, Material.RED_ROSE, (short) 1));
+        items.add(new ItemInfo("Allium", new String[][]{{"flow", "mag"}, {"alli"}}, Material.RED_ROSE, (short) 2));
+        items.add(new ItemInfo("Azure Bluet", new String[][]{{"flow", "whit"}, {"azu", "blue"}}, Material.RED_ROSE, (short) 3));
+        items.add(new ItemInfo("Red Tulip", new String[][]{{"tul", "red"}}, Material.RED_ROSE, (short) 4));
+        items.add(new ItemInfo("Orange Tulip", new String[][]{{"tul", "ora"}}, Material.RED_ROSE, (short) 5));
+        items.add(new ItemInfo("White Tulip", new String[][]{{"tul", "whit"}}, Material.RED_ROSE, (short) 6));
+        items.add(new ItemInfo("Pink Tulip", new String[][]{{"tul", "pin"}}, Material.RED_ROSE, (short) 7));
+        items.add(new ItemInfo("Oxeye Daisy", new String[][]{{"dais"}, {"oxe", "dais"}}, Material.RED_ROSE, (short) 8));
+        //
         items.add(new ItemInfo("Brown Mushroom", new String[][]{{"mush", "bro"}}, Material.BROWN_MUSHROOM));
         items.add(new ItemInfo("Red Mushroom", new String[][]{{"mush", "red"}}, Material.RED_MUSHROOM));
         items.add(new ItemInfo("Gold Block", new String[][]{{"gold", "bl"}}, Material.GOLD_BLOCK));
         items.add(new ItemInfo("Iron Block", new String[][]{{"iron", "bl"}}, Material.IRON_BLOCK));
-        /* 
-         * No longer obtainable in inventory in 1.8
-         * items.add(new ItemInfo("Double Stone Slab", new String[][]{{"doub", "slab"}, {"doub", "slab", "sto"}, {"doub", "step", "sto"}}, Material.DOUBLE_STEP));
-         * items.add(new ItemInfo("Double Sandstone Slab", new String[][]{{"doub", "slab", "sand", "sto"}, {"doub", "step", "sand", "sto"}}, Material.DOUBLE_STEP, (short) 1));
-         * items.add(new ItemInfo("Double Wooden Slab", new String[][]{{"doub", "slab", "wood"}, {"doub", "step", "wood"}}, Material.DOUBLE_STEP, (short) 2));
-         * items.add(new ItemInfo("Double Cobblestone Slab", new String[][]{{"doub", "slab", "cob", "sto"}, {"doub", "slab", "cob"}, {"doub", "step", "cob"}}, Material.DOUBLE_STEP, (short) 3));
-         * items.add(new ItemInfo("Double Brick Slab", new String[][]{{"doub", "slab", "bri"}}, Material.DOUBLE_STEP, (short) 4));
-         * items.add(new ItemInfo("Double Stone Brick Slab", new String[][]{{"doub", "slab", "smoo"}, {"doub", "slab", "sto", "bri"}}, Material.DOUBLE_STEP, (short) 5));
-         * items.add(new ItemInfo("Double Smooth Sandstone Slab", new String[][]{{"doub", "slab", "sand", "smoo"}}, Material.DOUBLE_STEP, (short) 9));
-        **/
-        items.add(new ItemInfo("Stone Slab", new String[][]{{"slab", "sto"}, {"slab"}, {"step", "ston"}}, Material.STEP));
+        // Slab blocks
+        // Minecraft:Double_stone_slab are techical /setblock ID:43 205 (1.8)
+        // Minecraft:Double_stone_slab2 are technical /setblock ID:180 181 (1.8)
+        items.add(new ItemInfo("Stone Slab", new String[][]{{"slab", "sto"}, {"slab"}, {"step", "ston"}}, Material.STEP));       
         items.add(new ItemInfo("Sandstone Slab", new String[][]{{"slab", "sand", "sto"}, {"step", "sand", "sto"}}, Material.STEP, (short) 1));
         items.add(new ItemInfo("Wooden Slab", new String[][]{{"slab", "woo"}, {"step", "woo"}}, Material.STEP, (short) 2));
+        items.add(new ItemInfo("Oak Slab", new String[][]{{"slab", "oak"}, {"step", "oak"}}, Material.WOOD_STEP));
+        items.add(new ItemInfo("Spruce Slab", new String[][]{{"slab", "spru"}, {"step", "spru"}}, Material.WOOD_STEP, (short) 1));
+        items.add(new ItemInfo("Birch Slab", new String[][]{{"slab", "birc"}, {"step", "birc"}}, Material.WOOD_STEP, (short) 2));
+        items.add(new ItemInfo("Jungle Wood Slab", new String[][]{{"jung", "wood", "sla"}, {"slab", "jung"}, {"step", "jung"}}, Material.WOOD_STEP, (short) 3));
+        items.add(new ItemInfo("Acacia Slab", new String[][]{{"slab", "aca"}, {"step", "aca"}}, Material.WOOD_STEP, (short) 4));
+        items.add(new ItemInfo("Dark Oak Slab", new String[][]{{"slab", "dar", "oak"}, {"step", "dar", "oak"}}, Material.WOOD_STEP, (short) 5));
         items.add(new ItemInfo("Cobblestone Slab", new String[][]{{"slab", "cob", "sto"}, {"slab", "cob"}}, Material.STEP, (short) 3));
         items.add(new ItemInfo("Brick Slab", new String[][]{{"slab", "bri"}}, Material.STEP, (short) 4));
         items.add(new ItemInfo("Stone Brick Slab", new String[][]{{"slab", "sto", "bri"}}, Material.STEP, (short) 5));
+        items.add(new ItemInfo("Nether Brick Slab", new String[][]{{"sla", "net", "bri"}, {"step", "net", "bri"}}, Material.STEP, (short) 6));
+        items.add(new ItemInfo("Quartz Slab", new String[][]{{"qua", "slab"}, {"qua", "step"}}, Material.STEP, (short) 7));
+        items.add(new ItemInfo("Red Sandstone Slab", new String[][]{{"red", "san", "ston", "slab"}, {"red", "san", "ston", "step"}}, Material.STONE_SLAB2));
+        items.add(new ItemInfo("Purpur Slab", new String[][]{{"purp", "slab"}, {"qua", "step"}}, Material.PURPUR_SLAB));
+        //
         items.add(new ItemInfo("Brick", new String[][]{{"bric"}}, Material.BRICK));
         items.add(new ItemInfo("TNT", new String[][]{{"tnt"}, {"boom"}}, Material.TNT));
         items.add(new ItemInfo("Bookshelf", new String[][]{{"bookshe"}, {"book", "she"}}, Material.BOOKSHELF));
-        items.add(new ItemInfo("Moss Stone", new String[][]{{"moss", "sto"}, {"moss"}}, Material.MOSSY_COBBLESTONE));
+        items.add(new ItemInfo("MossY Stone", new String[][]{{"moss", "sto"}, {"moss"}}, Material.MOSSY_COBBLESTONE));
         items.add(new ItemInfo("Obsidian", new String[][]{{"obsi"}}, Material.OBSIDIAN));
         items.add(new ItemInfo("Torch", new String[][]{{"torc"}}, Material.TORCH));
-        items.add(new ItemInfo("Fire", new String[][]{{"fire"}}, Material.FIRE));
-        items.add(new ItemInfo("Monster Spawner", new String[][]{{"spawn"}}, Material.MOB_SPAWNER));
+        // Minecraft:Fire is technical /setblock ID:51
+        items.add(new ItemInfo("Monster Spawner", new String[][]{{"spawn"},{"mob", "spawn"}}, Material.MOB_SPAWNER));
+        // Stair Blocks
         items.add(new ItemInfo("Oak Wood Stairs", new String[][]{{"stair", "wood"}, {"oak", "stair"}}, Material.WOOD_STAIRS));
-        items.add(new ItemInfo("Jungle Wood Stairs", new String[][]{{"jungle", "stair"}, {"jung", "stair", "woo"}}, Material.JUNGLE_WOOD_STAIRS));
+        items.add(new ItemInfo("Cobblestone Stairs", new String[][]{{"stair", "cob", "sto"}, {"stair", "cob"}}, Material.COBBLESTONE_STAIRS));
+        items.add(new ItemInfo("Brick Stairs", new String[][]{{"stair", "bri"}}, Material.BRICK_STAIRS));
+        items.add(new ItemInfo("Stone Brick Stairs", new String[][]{{"stair", "sto", "bri"}, {"stair", "sto"}, {"stair", "smoo", "bri"}, {"stair", "smoo"}}, Material.SMOOTH_STAIRS));
+        items.add(new ItemInfo("Nether Brick Stairs", new String[][] {{"neth", "stair"}, {"neth", "stai", "bric"}}, Material.NETHER_BRICK_STAIRS));
+        items.add(new ItemInfo("Sandstone Stair", new String[][]{{"stair", "sand", "sto"}, {"stair", "sand"}}, Material.SANDSTONE_STAIRS));
         items.add(new ItemInfo("Spruce Wood Stairs", new String[][]{{"spruce", "stai"}, {"spru", "stair", "woo"}}, Material.SPRUCE_WOOD_STAIRS));
         items.add(new ItemInfo("Birch Wood Stairs", new String[][]{{"birch", "stair"}, {"birc", "stai", "woo"}}, Material.BIRCH_WOOD_STAIRS));
+        items.add(new ItemInfo("Jungle Wood Stairs", new String[][]{{"jungle", "stair"}, {"jung", "stair", "woo"}}, Material.JUNGLE_WOOD_STAIRS));
+        items.add(new ItemInfo("Quartz Stairs", new String[][]{{"qua", "stair"}}, Material.QUARTZ_STAIRS));
+        items.add(new ItemInfo("Acacia Wood Stairs", new String[][]{{"stair", "wood", "acac"}, {"acac", "stair"}}, Material.ACACIA_STAIRS));
+        items.add(new ItemInfo("Dark Oak Wood Stairs", new String[][]{{"stair", "wood", "dar", "oak"}, {"dar", "oak", "stair"}}, Material.DARK_OAK_STAIRS));
+        items.add(new ItemInfo("Red Sandstone Stairs", new String[][]{{"red", "san", "ston", "stai"}, {"red", "san", "ston", "step"}}, Material.RED_SANDSTONE_STAIRS));
+        items.add(new ItemInfo("Purpur Stairs", new String[][]{{"purp", "stair"}}, Material.PURPUR_STAIRS));
+        //
         items.add(new ItemInfo("Chest", new String[][]{{"chest"}}, Material.CHEST));
+        // Minecraft:redstone_wire is technical /setblock only ID:55
         items.add(new ItemInfo("Diamond Ore", new String[][]{{"ore", "diam"}}, Material.DIAMOND_ORE));
         items.add(new ItemInfo("Diamond Block", new String[][]{{"diam", "bl"}}, Material.DIAMOND_BLOCK));
         items.add(new ItemInfo("Crafting Table", new String[][]{{"benc"}, {"squa"}, {"craft"}}, Material.WORKBENCH));
+        // minecraft:wheat  block is technical /setblock only ID:59
         items.add(new ItemInfo("Farmland", new String[][]{{"soil"}, {"farm"}}, Material.SOIL));
         items.add(new ItemInfo("Furnace", new String[][]{{"furna"}, {"cooke"}}, Material.FURNACE));
         items.add(new ItemInfo("Ladder", new String[][]{{"ladd"}}, Material.LADDER));
         items.add(new ItemInfo("Rails", new String[][]{{"rail"}, {"trac"}}, Material.RAILS));
-        items.add(new ItemInfo("Cobblestone Stairs", new String[][]{{"stair", "cob", "sto"}, {"stair", "cob"}}, Material.COBBLESTONE_STAIRS));
         items.add(new ItemInfo("Lever", new String[][]{{"lever"}, {"switc"}}, Material.LEVER));
         items.add(new ItemInfo("Stone Pressure Plate", new String[][]{{"pres", "plat", "ston"}}, Material.STONE_PLATE));
         items.add(new ItemInfo("Wooden Pressure Plate", new String[][]{{"pres", "plat", "wood"}}, Material.WOOD_PLATE));
@@ -243,10 +335,8 @@ public class Items {
         items.add(new ItemInfo("Mossy Stone Brick", new String[][]{{"moss", "sto", "bri"}, {"moss", "smoo", "bri"}, {"moss", "smoo"}, {"moss", "sto"}}, Material.SMOOTH_BRICK, (short) 1));
         items.add(new ItemInfo("Cracked Stone Brick", new String[][]{{"cra", "sto", "bri"}, {"cra", "sto"}, {"cra", "smoo", "bri"}, {"cra", "smoo"}}, Material.SMOOTH_BRICK, (short) 2));
         items.add(new ItemInfo("Chiseled Stone Brick", new String[][]{{"chis", "sto", "bri"}, {"chis", "sto"}, {"chis", "smoo", "bri"}}, Material.SMOOTH_BRICK, (short) 3));
-        items.add(new ItemInfo("Brick Stairs", new String[][]{{"stair", "bri"}}, Material.BRICK_STAIRS));
         items.add(new ItemInfo("Fence Gate", new String[][]{{"gate", "fen"}, {"gate"}}, Material.FENCE_GATE));
         items.add(new ItemInfo("Vines", new String[][]{{"vine"}, {"ivy"}}, Material.VINE));
-        items.add(new ItemInfo("Stone Brick Stairs", new String[][]{{"stair", "sto", "bri"}, {"stair", "sto"}, {"stair", "smoo", "bri"}, {"stair", "smoo"}}, Material.SMOOTH_STAIRS));
         items.add(new ItemInfo("Iron Shovel", new String[][]{{"shov", "ir"}, {"spad", "ir"}}, Material.IRON_SPADE));
         items.add(new ItemInfo("Iron Pickaxe", new String[][]{{"pick", "ir"}}, Material.IRON_PICKAXE));
         items.add(new ItemInfo("Iron Axe", new String[][]{{"axe", "ir"}}, Material.IRON_AXE));
@@ -385,7 +475,6 @@ public class Items {
         items.add(new ItemInfo("Brewing Stand Block", new String[][] {{ "bloc", "brew", "stan" }, {"alch", "bloc"}}, Material.BREWING_STAND));
         items.add(new ItemInfo("Brewing Stand", new String[][] {{"brew", "stan"}, {"alch", "stand"}, {"alch", "tab"}}, Material.BREWING_STAND_ITEM));
         items.add(new ItemInfo("Nether Brick", new String[][] {{"neth", "bric"}}, Material.NETHER_BRICK));
-        items.add(new ItemInfo("Nether Brick Stairs", new String[][] {{"neth", "stair"}, {"neth", "stai", "bric"}}, Material.NETHER_BRICK_STAIRS));
         items.add(new ItemInfo("Nether Brick Fence", new String[][]{{"neth", "fence"}, {"neth", "fence", "bric"}}, Material.NETHER_FENCE));
         items.add(new ItemInfo("Netherwarts", new String[][]{{"wart"}, {"neth", "war"}}, Material.NETHER_WARTS));
         items.add(new ItemInfo("Netherstalk", new String[][]{{"neth", "stalk"}}, Material.NETHER_STALK));
@@ -510,19 +599,7 @@ public class Items {
         items.add(new ItemInfo("Ender Chest", new String[][]{{"end", "ches"}}, Material.ENDER_CHEST));
         items.add(new ItemInfo("Tripwire Hook", new String[][]{{"hoo", "trip"}}, Material.TRIPWIRE_HOOK));
         items.add(new ItemInfo("Tripwire", new String[][]{{"trip"}}, Material.TRIPWIRE));
-        items.add(new ItemInfo("Sandstone Stair", new String[][]{{"stair", "sand", "sto"}, {"stair", "sand"}}, Material.SANDSTONE_STAIRS));
-        /*
-         * Double slabs removed from Inventory in 1.8
-         * 
-         * items.add(new ItemInfo("Double Oak Slab", new String[][]{{"doub", "slab", "oak"}, {"doub", "step", "oak"}}, Material.WOOD_DOUBLE_STEP));
-         * items.add(new ItemInfo("Double Spruce Slab", new String[][]{{"doub", "slab", "spru"}, {"doub", "step", "spru"}}, Material.WOOD_DOUBLE_STEP, (short) 1));
-         * items.add(new ItemInfo("Double Birch Slab", new String[][]{{"doub", "slab", "birc"}, {"doub", "step", "birc"}}, Material.WOOD_DOUBLE_STEP, (short) 2));
-         * items.add(new ItemInfo("Double Jungle Wood Slab", new String[][]{{"doub", "slab", "jungl"}, {"doub", "step", "jung"}}, Material.WOOD_DOUBLE_STEP, (short) 3));
-        **/
-        items.add(new ItemInfo("Oak Slab", new String[][]{{"slab", "oak"}, {"step", "oak"}}, Material.WOOD_STEP));
-        items.add(new ItemInfo("Spruce Slab", new String[][]{{"slab", "spru"}, {"step", "spru"}}, Material.WOOD_STEP, (short) 1));
-        items.add(new ItemInfo("Birch Slab", new String[][]{{"slab", "birc"}, {"step", "birc"}}, Material.WOOD_STEP, (short) 2));
-        items.add(new ItemInfo("Jungle Wood Slab", new String[][]{{"jung", "wood", "sla"}, {"slab", "jung"}, {"step", "jung"}}, Material.WOOD_STEP, (short) 3));
+    
         items.add(new ItemInfo("Book and Quill", new String[][]{{"qui", "book"}}, Material.BOOK_AND_QUILL));
         items.add(new ItemInfo("Written Book", new String[][]{{"wri", "book"}}, Material.WRITTEN_BOOK));
         items.add(new ItemInfo("Cocoa Pod", new String[][]{{"coco"}, {"coc", "pod"}}, Material.COCOA));
@@ -576,8 +653,7 @@ public class Items {
         items.add(new ItemInfo("Green Firework Star", new String[][]{{"gre", "fire", "star"}}, Material.FIREWORK_CHARGE, (short) 14));
         items.add(new ItemInfo("Red Firework Star", new String[][]{{"red", "fire", "star"}}, Material.FIREWORK_CHARGE, (short) 15));
         items.add(new ItemInfo("Black Firework Star", new String[][]{{"bla", "fire", "star"}}, Material.FIREWORK_CHARGE, (short) 16));
-        items.add(new ItemInfo("Dead Bush", new String[][]{{"dea", "bush"}}, Material.DEAD_BUSH));
-        items.add(new ItemInfo("Nether Brick Slab", new String[][]{{"sla", "net", "bri"}, {"step", "net", "bri"}}, Material.STEP, (short) 6));
+
         //1.5 Blocks & Items
         items.add(new ItemInfo("Activator Rail", new String[][]{{"rail", "acti"}, {"trac", "acti"}, {"activ"}}, Material.ACTIVATOR_RAIL));
         items.add(new ItemInfo("Block of Redstone", new String[][]{{"block", "red"}, {"block", "rs"}}, Material.REDSTONE_BLOCK));
@@ -592,9 +668,6 @@ public class Items {
         items.add(new ItemInfo("Nether Quartz", new String[][]{{"neth", "qua"}, {"qua"}}, Material.QUARTZ));
         items.add(new ItemInfo("Nether Quartz Ore", new String[][]{{"neth", "qua", "ore"}, {"qua", "ore"}}, Material.QUARTZ_ORE));
         items.add(new ItemInfo("Quartz Block", new String[][]{{"qua", "blo"}}, Material.QUARTZ_BLOCK));
-        items.add(new ItemInfo("Quartz Slab", new String[][]{{"qua", "slab"}, {"qua", "step"}}, Material.STEP, (short) 7));
-        items.add(new ItemInfo("Quartz Double Slab", new String[][]{{"qua", "dou", "sla"}, {"qua", "dou", "step"}}, Material.DOUBLE_STEP, (short) 7));
-        items.add(new ItemInfo("Quartz Stairs", new String[][]{{"qua", "stair"}}, Material.QUARTZ_STAIRS));
         items.add(new ItemInfo("Chiseled Quartz", new String[][]{{"qua", "chis"}}, Material.QUARTZ_BLOCK, (short) 1));
         items.add(new ItemInfo("Quartz Pillar", new String[][]{{"qua", "pil"}}, Material.QUARTZ_BLOCK, (short) 2));
         items.add(new ItemInfo("Weighted Gold Plate", new String[][]{{"wei", "plat", "gol"}, {"pres", "plat", "gol"}}, Material.GOLD_PLATE));
@@ -644,39 +717,21 @@ public class Items {
         //1.7 Blocks and Items
         items.add(new ItemInfo("Packed Ice", new String[][]{{"pack", "ice"}}, Material.PACKED_ICE));
         // renamed from grassless dirt in 1.8 to Coarse Dirt.
-        items.add(new ItemInfo("Coarse Dirt", new String[][]{{"coar", "dirt"}, {"less", "dirt"}}, Material.DIRT, (short) 1)); 
+         
         items.add(new ItemInfo("Acacia Log", new String[][]{{"acac"}, {"log", "acac"}}, Material.LOG_2));
         items.add(new ItemInfo("Dark Oak Log", new String[][]{{"oak", "dar"}, {"log", "oak", "dar"}}, Material.LOG_2, (short) 1));
         items.add(new ItemInfo("Acacia Plank", new String[][]{{"acac", "plank"}, {"acac", "wood"}}, Material.WOOD, (short) 4));
         items.add(new ItemInfo("Dark Oak Plank", new String[][]{{"dar", "oak", "plank"}, {"dar", "oak", "wood"}}, Material.WOOD, (short) 5));
-        items.add(new ItemInfo("Acacia Wood Stairs", new String[][]{{"stair", "wood", "acac"}, {"acac", "stair"}}, Material.ACACIA_STAIRS));
-        items.add(new ItemInfo("Dark Oak Wood Stairs", new String[][]{{"stair", "wood", "dar", "oak"}, {"dar", "oak", "stair"}}, Material.DARK_OAK_STAIRS));
         items.add(new ItemInfo("Acacia Sapling", new String[][]{{"sapl", "acac"}}, Material.SAPLING, (short) 4));
         items.add(new ItemInfo("Dark Oak Sapling", new String[][]{{"sapl", "oak", "dar"}}, Material.SAPLING, (short) 5));
         items.add(new ItemInfo("Acacia Leaves", new String[][]{{"lea", "acac"}}, Material.LEAVES_2));
         items.add(new ItemInfo("Dark Oak Leaves", new String[][]{{"lea", "oak", "dar"}}, Material.LEAVES_2, (short) 1));
         items.add(new ItemInfo("Packed Ice", new String[][]{{"ice", "pac"}, {"ice", "opaq"}}, Material.PACKED_ICE));
-        items.add(new ItemInfo("Podzol", new String[][]{{"podz"}, {"dirt", "pod"}}, Material.DIRT, (short) 2));
-        items.add(new ItemInfo("Red Sand", new String[][]{{"red", "sand"}}, Material.SAND, (short) 1));
+        
         items.add(new ItemInfo("Cobblestone Monster Egg", new String[][]{{"cobb","sto","mons","egg"},{"cobb","mons", "egg"}, {"hid", "silver", "cob"}}, Material.MONSTER_EGGS, (short) 1));
         items.add(new ItemInfo("Cracked Stone Brick Monster Egg", new String[][]{{"cra","sto","bri","mons", "egg"}, {"hid", "silver","cra","sto","bri"}}, Material.MONSTER_EGGS, (short) 4));
         items.add(new ItemInfo("Chiseled Stone Brick Monster Egg", new String[][]{{"chi","stone","bri","mons", "egg"}, {"hid", "silver","chi","sto","bri"}}, Material.MONSTER_EGGS, (short) 5));
-        items.add(new ItemInfo("White Stained Glass", new String[][]{{"stai", "glas", "whit"}, {"stai", "glas"}}, Material.STAINED_GLASS));
-        items.add(new ItemInfo("Orange Stained Glass", new String[][]{{"stai", "glas", "ora"}}, Material.STAINED_GLASS, (short) 1));
-        items.add(new ItemInfo("Magenta Stained Glass", new String[][]{{"stai", "glas", "mag"}}, Material.STAINED_GLASS, (short) 2));
-        items.add(new ItemInfo("Light Blue Stained Glass", new String[][]{{"stai", "glas", "lig", "blue"}}, Material.STAINED_GLASS, (short) 3));
-        items.add(new ItemInfo("Yellow Stained Glass", new String[][]{{"stai", "glas", "yell"}}, Material.STAINED_GLASS, (short) 4));
-        items.add(new ItemInfo("Light Green Stained Glass", new String[][]{{"stai", "glas", "lig", "gree"}, {"stai", "glas", "gree"}}, Material.STAINED_GLASS, (short) 5));
-        items.add(new ItemInfo("Pink Stained Glass", new String[][]{{"stai", "glas", "pink"}}, Material.STAINED_GLASS, (short) 6));
-        items.add(new ItemInfo("Gray Stained Glass", new String[][]{{"stai", "glas", "gra"}, {"stai", "glas", "gre"}}, Material.STAINED_GLASS, (short) 7));
-        items.add(new ItemInfo("Light Gray Stained Glass", new String[][]{{"lig", "stai", "glas", "gra"}, {"lig", "stai", "glas", "gre"}}, Material.STAINED_GLASS, (short) 8));
-        items.add(new ItemInfo("Cyan Stained Glass", new String[][]{{"stai", "glas", "cya"}}, Material.STAINED_GLASS, (short) 9));
-        items.add(new ItemInfo("Purple Stained Glass", new String[][]{{"stai", "glas", "pur"}}, Material.STAINED_GLASS, (short) 10));
-        items.add(new ItemInfo("Blue Stained Glass", new String[][]{{"stai", "glas", "blue"}}, Material.STAINED_GLASS, (short) 11));
-        items.add(new ItemInfo("Brown Stained Glass", new String[][]{{"stai", "glas", "brow"}}, Material.STAINED_GLASS, (short) 12));
-        items.add(new ItemInfo("Dark Green Stained Glass", new String[][]{{"stai", "glas", "dar", "gree"}, {"stai", "glas", "gree"}}, Material.STAINED_GLASS, (short) 13));
-        items.add(new ItemInfo("Red Stained Glass", new String[][]{{"stai", "glas", "red"}}, Material.STAINED_GLASS, (short) 14));
-        items.add(new ItemInfo("Black Stained Glass", new String[][]{{"stai", "glas", "bla"}}, Material.STAINED_GLASS, (short) 15));
+
         items.add(new ItemInfo("White Stained Glass Pane", new String[][]{{"stai", "glas", "pane", "whit"}, {"stai", "glas", "pane"}}, Material.STAINED_GLASS_PANE));
         items.add(new ItemInfo("Orange Stained Glass Pane", new String[][]{{"stai", "glas", "pane", "ora"}}, Material.STAINED_GLASS_PANE, (short) 1));
         items.add(new ItemInfo("Magenta Stained Glass Pane", new String[][]{{"stai", "glas", "pane", "mag"}}, Material.STAINED_GLASS_PANE, (short) 2));
@@ -694,20 +749,8 @@ public class Items {
         items.add(new ItemInfo("Red Stained Glass Pane", new String[][]{{"stai", "glas", "pane", "red"}}, Material.STAINED_GLASS_PANE, (short) 14));
         items.add(new ItemInfo("Black Stained Glass Pane", new String[][]{{"stai", "glas", "pane", "bla"}}, Material.STAINED_GLASS_PANE, (short) 15));
         items.add(new ItemInfo("Poppy", new String[][]{{"flow", "red"}, {"rose"}, {"poppy"}}, Material.RED_ROSE));
-        items.add(new ItemInfo("Blue Orchid", new String[][]{{"flow", "blue"}, {"orch", "blue"}}, Material.RED_ROSE, (short) 1));
-        items.add(new ItemInfo("Allium", new String[][]{{"flow", "mag"}, {"alli"}}, Material.RED_ROSE, (short) 2));
-        items.add(new ItemInfo("Azure Bluet", new String[][]{{"flow", "whit"}, {"azu", "blue"}}, Material.RED_ROSE, (short) 3));
-        items.add(new ItemInfo("Red Tulip", new String[][]{{"tul", "red"}}, Material.RED_ROSE, (short) 4));
-        items.add(new ItemInfo("Orange Tulip", new String[][]{{"tul", "ora"}}, Material.RED_ROSE, (short) 5));
-        items.add(new ItemInfo("White Tulip", new String[][]{{"tul", "whit"}}, Material.RED_ROSE, (short) 6));
-        items.add(new ItemInfo("Pink Tulip", new String[][]{{"tul", "pin"}}, Material.RED_ROSE, (short) 7));
-        items.add(new ItemInfo("Oxeye Daisy", new String[][]{{"dais"}, {"oxe", "dais"}}, Material.RED_ROSE, (short) 8));
-        items.add(new ItemInfo("Sunflower", new String[][]{{"flow", "sun"}}, Material.DOUBLE_PLANT, (short) 0));
-        items.add(new ItemInfo("Lilac", new String[][]{{"flow", "lila"}, {"lila"}}, Material.DOUBLE_PLANT, (short) 1));
-        items.add(new ItemInfo("Double Tallgrass", new String[][]{{"doub", "tall", "gras"}, {"doub", "long", "gras"}}, Material.DOUBLE_PLANT, (short) 2));
-        items.add(new ItemInfo("Large Fern", new String[][]{{"larg", "fern"}, {"doub", "fern"}}, Material.DOUBLE_PLANT, (short) 3));
-        items.add(new ItemInfo("Rose Bush", new String[][]{{"bush", "rose"}}, Material.DOUBLE_PLANT, (short) 4));
-        items.add(new ItemInfo("Peony", new String[][]{{"flow", "peon"}, {"peon"}}, Material.DOUBLE_PLANT, (short) 5));
+
+
         items.add(new ItemInfo("Command Minecart", new String[][]{{"cart", "comm"}}, Material.COMMAND_MINECART));
         items.add(new ItemInfo("Potion of Water Breathing", new String[][] {{"poti", "wate", "breat"}}, Material.POTION, (short) 8205));
         items.add(new ItemInfo("Potion of Water Breathing (Reverted)", new String[][] {{"poti", "wate", "breat", "rev"}}, Material.POTION, (short) 8237));
@@ -719,8 +762,6 @@ public class Items {
         items.add(new ItemInfo("Cooked Salmon", new String[][]{{"salm", "cook"}}, Material.COOKED_FISH, (short) 1));
         items.add(new ItemInfo("Clownfish", new String[][]{{"fish", "clow"}}, Material.RAW_FISH, (short) 2));
         items.add(new ItemInfo("Pufferfish", new String[][]{{"fish", "puff"}, {"fish", "blo"}, {"fish", "glob"}}, Material.RAW_FISH, (short) 3));
-        items.add(new ItemInfo("Acacia Slab", new String[][]{{"slab", "aca"}, {"step", "aca"}}, Material.WOOD_STEP, (short) 4));
-        items.add(new ItemInfo("Dark Oak Slab", new String[][]{{"slab", "dar", "oak"}, {"step", "dar", "oak"}}, Material.WOOD_STEP, (short) 5));
         // items added in 1.8
         items.add(new ItemInfo("Granite", new String[][]{{"gran"}}, Material.STONE, (short) 1));
         items.add(new ItemInfo("Polished Granite", new String[][]{{"pol", "gran"}, {"smoo", "gran"}}, Material.STONE, (short) 2));
@@ -729,18 +770,15 @@ public class Items {
         items.add(new ItemInfo("Andesite", new String[][]{{"ande"}}, Material.STONE, (short) 5));
         items.add(new ItemInfo("Polished Andesite", new String[][]{{"pol", "ande"}, {"smoo", "ande"}}, Material.STONE, (short) 6));
         items.add(new ItemInfo("Slime Block", new String[][]{{"sli", "blo"}}, Material.SLIME_BLOCK));
-        items.add(new ItemInfo("Wet Sponge", new String[][]{{"wet", "spon"}}, Material.SPONGE, (short) 1));
+        
         items.add(new ItemInfo("Barrier", new String[][]{{"barri"}}, Material.BARRIER));
         items.add(new ItemInfo("Iron Trapdoor", new String[][]{{"tra", "doo", "iron"}, {"iron", "hatc"}}, Material.IRON_TRAPDOOR));
         items.add(new ItemInfo("Prismarine", new String[][]{{"pris", "mar"}}, Material.PRISMARINE));
         items.add(new ItemInfo("Prismarine Bricks", new String[][]{{"bri", "pris", "mar"}}, Material.PRISMARINE, (short) 1));
         items.add(new ItemInfo("Dark Prismarine", new String[][]{{"dar", "pris", "mar"}}, Material.PRISMARINE, (short) 2));
         items.add(new ItemInfo("Sea Lantern", new String[][]{{"sea", "lan"}}, Material.SEA_LANTERN));
-        items.add(new ItemInfo("Red Sandstone", new String[][]{{"red", "san", "sto"}}, Material.RED_SANDSTONE));
-        items.add(new ItemInfo("Chiseled Red Sandstone", new String[][]{{"red", "chi", "san", "sto"}}, Material.RED_SANDSTONE, (short) 1));
-        items.add(new ItemInfo("Smooth Red Sandstone", new String[][]{{"red", "smoo", "san", "sto"}}, Material.RED_SANDSTONE, (short) 2));
-        items.add(new ItemInfo("Red Sandstone Stairs", new String[][]{{"red", "san", "ston", "stai"}, {"red", "san", "ston", "step"}}, Material.RED_SANDSTONE_STAIRS));
-        items.add(new ItemInfo("Red Sandstone Slab", new String[][]{{"red", "san", "ston", "slab"}, {"red", "san", "ston", "step"}}, Material.STONE_SLAB2));
+
+        
         items.add(new ItemInfo("Spruce Fence Gate", new String[][]{{"gate", "spru", "fence"}}, Material.SPRUCE_FENCE_GATE));
         items.add(new ItemInfo("Birch Fence Gate", new String[][]{{"gate", "birc", "fence"}}, Material.BIRCH_FENCE_GATE));
         items.add(new ItemInfo("Jungle Fence Gate", new String[][]{{"gate", "jung", "fence"}}, Material.JUNGLE_FENCE_GATE));
